@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VaFT Alpha</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background:#050505;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-family:Arial, sans-serif;
+    color:#d8b16a;
+}
+
+.container{
+    display:flex;
+    gap:40px;
+}
+
+.glyph{
+    width:180px;
+    height:180px;
+
+    border:2px solid rgba(216,177,106,.8);
+    border-radius:12px;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    font-size:64px;
+    cursor:pointer;
+
+    transition:.3s;
+    box-shadow:
+        0 0 15px rgba(216,177,106,.15),
+        inset 0 0 15px rgba(216,177,106,.08);
+}
+
+.glyph:hover{
+    transform:translateY(-8px) scale(1.05);
+
+    box-shadow:
+        0 0 30px rgba(216,177,106,.4),
+        inset 0 0 25px rgba(216,177,106,.2);
+}
+
+.label{
+    position:absolute;
+    margin-top:230px;
+    font-size:14px;
+    letter-spacing:2px;
+    opacity:.8;
+}
+
+.box{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+}
+
+.title{
+    position:fixed;
+    top:40px;
+    font-size:42px;
+    letter-spacing:6px;
+}
+
+.subtitle{
+    position:fixed;
+    top:95px;
+    opacity:.6;
+    letter-spacing:3px;
+}
+
+</style>
+</head>
+<body>
+
+<div class="title">VaFT</div>
+<div class="subtitle">Vivere atque Fru`ii´T</div>
+
+<div class="container">
+
+    <div class="box">
+        <div class="glyph" onclick="openGlyph('7i')">
+            7i
+        </div>
+        <div class="label">HRÁČI</div>
+    </div>
+
+    <div class="box">
+        <div class="glyph" onclick="openGlyph('°&')">
+            °&
+        </div>
+        <div class="label">UMĚLÁ INTELIGENCE</div>
+    </div>
+
+    <div class="box">
+        <div class="glyph" onclick="openGlyph('ii')">
+            `ii´
+        </div>
+        <div class="label">TVŮRCI</div>
+    </div>
+
+</div>
+
+<script>
+
+function openGlyph(name){
+
+    alert(
+        "Otevřena sféra: " + name +
+        "\n\nVaFT 0.1 Alpha"
+    );
+
+}
+
+</script>
+
+</body>
+</html>
