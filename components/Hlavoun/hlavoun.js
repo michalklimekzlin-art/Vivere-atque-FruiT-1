@@ -5,7 +5,10 @@ const runBtn  = document.getElementById('hlavounRun');
 
 function logLine(prefix, text) {
   const p = document.createElement('p');
-  p.innerHTML = `<b>[${prefix}]</b> ${text}`;
+  const label = document.createElement('b');
+  label.textContent = `[${prefix}]`;
+  p.appendChild(label);
+  p.appendChild(document.createTextNode(' ' + text));
   logEl.appendChild(p);
   logEl.scrollTop = logEl.scrollHeight;
 }

@@ -427,7 +427,13 @@
         const heroes = JSON.parse(localStorage.getItem('VAFT_HEROES') || '[]');
         const box = document.getElementById('heroesList');
         if (!heroes.length) { box.textContent = 'Zatím nemáš uložené hrdiny.'; return; }
-        box.innerHTML = heroes.map(h => '• '+h.name+' ('+h.team+')').join('<br>');
+        box.textContent = '';
+        heroes.forEach((h, index) => {
+          if (index > 0) {
+            box.appendChild(document.createElement('br'));
+          }
+          box.appendChild(document.createTextNode('• ' + h.name + ' (' + h.team + ')'));
+        });
       }
 
       function appendHlavounMsg(role, text) {
@@ -435,7 +441,12 @@
         if (!box) return;
         const row = document.createElement('div');
         const name = role === 'user' ? 'Ty' : 'Hlavoun';
-        row.innerHTML = `<strong style="font-size:.6rem;opacity:.6;">${name}:</strong> <span>${text}</span>`;
+        const strong = document.createElement('strong');
+        strong.style.fontSize = '.6rem';
+        strong.style.opacity = '.6';
+        strong.textContent = name + ':';
+        row.appendChild(strong);
+        row.appendChild(document.createTextNode(' ' + text));
         box.appendChild(row);
         box.scrollTop = box.scrollHeight;
         const log = JSON.parse(localStorage.getItem('VAFT_HLAVOUN_LOG') || '[]');

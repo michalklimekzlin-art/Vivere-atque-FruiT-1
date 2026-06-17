@@ -262,13 +262,11 @@
           minute: "2-digit",
         });
 
-        blok.innerHTML =
-          "<small>" +
-          (role === "ty" ? "Ty" : "Revia") +
-          " • " +
-          cas +
-          "</small><br>" +
-          text;
+        const meta = document.createElement("small");
+        meta.textContent = (role === "ty" ? "Ty" : "Revia") + " • " + cas;
+        blok.appendChild(meta);
+        blok.appendChild(document.createElement("br"));
+        blok.appendChild(document.createTextNode(text));
 
         zpravy.appendChild(blok);
 

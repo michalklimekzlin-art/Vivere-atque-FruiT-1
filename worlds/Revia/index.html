@@ -427,13 +427,11 @@
               "revchat-msg " +
               (m.role === "user" ? "revchat-user" : "revchat-bot");
             const name = m.role === "user" ? "Ty" : "Revia";
-            row.innerHTML =
-              "<small>" +
-              name +
-              " • " +
-              (m.time || "") +
-              "</small><br>" +
-              m.content;
+            const meta = document.createElement("small");
+            meta.textContent = name + " • " + (m.time || "");
+            row.appendChild(meta);
+            row.appendChild(document.createElement("br"));
+            row.appendChild(document.createTextNode(m.content || ""));
             log.appendChild(row);
           });
           log.scrollTop = log.scrollHeight;
