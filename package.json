@@ -5,8 +5,10 @@
   "type": "module",
   "scripts": {
     "dev": "vercel dev",
-    "build": "vercel build"
+    "build": "true"
   },
-  "dependencies": {},
-  "devDependencies": {}
+  "engines": {
+    "node": "18.x"
+  },
+  "dependencies": {}
 }
