@@ -1,0 +1,12 @@
+{
+  "name": "vivere-atque-fruit",
+  "version": "1.0.0",
+  "description": "Kde je to Ovoce • Vivere atque FruiT",
+  "type": "module",
+  "scripts": {
+    "dev": "vercel dev",
+    "build": "vercel build"
+  },
+  "dependencies": {},
+  "devDependencies": {}
+}
