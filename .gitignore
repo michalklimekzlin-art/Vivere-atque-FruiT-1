@@ -1,10 +1,31 @@
-# Systémové soubory
+# Operating system files
 .DS_Store
 Thumbs.db
 
-# Node / build nástroje (kdybychom později používali)
+# Dependencies
 node_modules/
+
+# Build output and caches
 dist/
 build/
 .cache/
+coverage/
+.temp/
 temp/
+
+# Environment files
+.env
+.env.*
+!.env.example
+
+# Editor and tooling
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*

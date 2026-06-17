@@ -1,13 +1,12 @@
-# VAFT Guardian — Jak nasadit (stručně)
+# Guardian guide
 
-1. Vlož do repa:
-   - `vaft.message.shell.js`
-   - `vaft.guardian.client.js`
-   - `config/guardian-config.json`
-   - `GUIDE.md`
+This repository contains a browser guardian client and Netlify functions for challenge and submit flows.
 
-2. Client: v `index.html` načti:
-   ```html
-   <script src="./vaft.message.shell.js"></script>
-   <script src="./app.js"></script>
-   <script src="./vaft.guardian.client.js"></script>
+Current files:
+- `vaft.guardian.client.js`
+- `config/guardian-config.json`
+- `netlify/functions/`
+
+Integration note:
+- keep the guardian client loaded before features that depend on `window.VAFT.guardian`
+- validate any external endpoint changes before deployment
