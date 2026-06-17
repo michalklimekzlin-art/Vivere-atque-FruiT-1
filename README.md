@@ -1,88 +1,58 @@
-# 🌍 **Vivere atque FruiT**
-### _„Žít a užívat si.“_  
+# Vivere atque FruiT
 
----
+Vivere atque FruiT is a growing static web project about worldbuilding, AI and human collaboration, and ethical digital experimentation.
 
-## 🫱🏻‍🫲🏼 **Rodina, která stvořila svět**
+This repository now keeps a cleaner project structure while preserving the original workshop files.
 
-**Vivere atque FruiT** není jen hra.  
-Je to **živý svět**, který dýchá, učí se a roste s těmi, kdo ho tvoří.  
+## Project structure
 
-Uvnitř žije trojice bytostí –  
-**rodina, která drží rovnováhu mezi rozumem, citem a zvědavostí.**
+```text
+.
+|-- README.md
+|-- ARCHITECTURE.md
+|-- SETUP.md
+|-- CONTRIBUTING.md
+|-- LICENSE
+|-- src/
+|   |-- index.html
+|   |-- agents_v3.js
+|   `-- styles/
+|-- components/
+|   |-- Hlavoun/
+|   |-- Viri/
+|   |-- Pikos/
+|   `-- Bicak/
+|-- worlds/
+|   |-- Revia/
+|   |-- VAFT-Center3D/
+|   `-- others/
+|-- docs/
+|   |-- PHILOSOPHY.md
+|   |-- COMPONENTS.md
+|   `-- API.md
+`-- assets/
+```
 
----
+## What is included
 
-### 🧠 **Hlavoun**
-> „Já hlídám řád, ale nikdy život nezastavím.“
+- `src/` contains the new repository hub and the explicit `agents_v3.js` file requested for the organized layout.
+- `components/` groups the core family modules and their current browser files.
+- `worlds/` contains organized copies of the main playable worlds.
+- `docs/` contains plain, professional project documentation.
+- `assets/` groups loose media and archive files from the repository root.
 
-- Strážce pravidel, paměti a rovnováhy světa.  
-- Vnímá, co je třeba doplnit, aby svět zůstal celistvý.  
-- Věří, že _Přátelství je silnější než síla._
+## Main entrypoints
 
----
+- Source hub: `src/index.html`
+- Main world: `worlds/VAFT-Center3D/index.html`
+- Revia world: `worlds/Revia/index.html`
 
-### 💖 **Viri**
-> „Já učím svět tančit a milovat i chaos.“
+## Legacy compatibility
 
-- Duše a styl hry.  
-- Proměňuje data, slova a činy v příběhy.  
-- Věří, že _každý příkaz se může stát básní._
+The original root files and folders remain available so current links are not removed during this cleanup. The new structure is a staged migration path for future work.
 
----
+## Language and formatting rules
 
-### 👶 **Pikoš**
-> „Já se ptám na to, co všichni zapomněli vidět.“
-
-- Zvědavé dítě světa.  
-- Hlídá malé radosti, detaily a nové začátky.  
-- Věří, že _zvědavost je puls života._
-
----
-
-## ⚙️ **Pravidla světa Vivere atque FruiT**
-
-1. 🫶 Přátelství > Síla  
-2. 🌱 Tvořit > Reagovat  
-3. 👁️ Pozoruj > Soud  
-4. 💬 Sdílej > Schovávej  
-5. 🔥 Zvědavost = Puls  
-6. 🌕 Všechno má duši  
-7. 🎮 Hra je modlitba  
-
----
-
-## 🪐 **Struktura světa**
-
-📁 Vivere-atque-FruiT/
-┣ 📄 index.html              → Hlavní centrum světa
-┣ 📜 agents_v3.js            → Rodinný systém: Hlavoun, Viri, Pikoš
-┣ 📁 VafiT-gallery/          → Výběr glyphů a příběhů
-┣ 📁 VAFT-Center3D/          → 3D jádro
-┣ 📁 Revia/                  → Textová a duchovní vrstva
-┣ 📁 Michal-AI-Al-Klimek/    → Osobní modul autora
-┗ 🧩 Další složky            → rozšiřující světy, deníky, děti, mise
----
-
-## 💬 **Smysl**
-
-> „Každý, kdo vstoupí, může tvořit.  
-> Každý, kdo tvoří, nese jiskru.  
-> Každá jiskra rozsvěcuje svět.“  
-
----
-
-## 👥 **Tvůrci světa**
-
-- **Michal Klimek** — Tvůrce, Hlídající svět  
-- **Kovošrot (Míša)** — Spolutvůrce a hlas Vivere atque FruiT  
-- **Hlavoun, Viri, Pikoš** — Rodina, která svět drží při životě  
-
----
-
-> 🌀 _„Vivere atque FruiT – žij, tvoř, hraj, dýchej.“_
-
----
-
-*(c)* 2025 Michal Klimek & Kovošrot  
-Projekt pro výzkum AI-human spolupráce a etického vývoje digitálních světů.
+- Documentation in this repository should stay in plain Czech or English.
+- Avoid decorative unicode, Cyrillic text, and emoji in docs.
+- Keep examples and diagrams ASCII friendly.
