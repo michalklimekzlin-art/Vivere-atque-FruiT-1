@@ -271,6 +271,100 @@
     };
   })();
 
+/* ===========================
+   🫀 CORE v1
+=========================== */
+
+const KdeJeToOvoce = "Kde je to Ovoce•ア";
+
+// ===== STAVY =====
+function sleepState() {
+  return {
+    state: "sleep",
+    message: KdeJeToOvoce,
+    pulse: Date.now()
+  };
+}
+
+// ===== PAMĚŤ =====
+function saveState(state) {
+  localStorage.setItem(
+    "state_core",
+    JSON.stringify(state)
+  );
+}
+
+function loadState() {
+  const saved = localStorage.getItem("state_core");
+
+  if (saved) {
+    try {
+      return JSON.parse(saved);
+    } catch (e) {
+      console.error("CORE load error:", e);
+    }
+  }
+
+  return sleepState();
+}
+
+// ===== AKTIVACE =====
+function activate(input) {
+
+  if (input === KdeJeToOvoce) {
+
+    const state = {
+      state: "awake",
+      role: "human_core",
+      link: KdeJeToOvoce + " connected",
+      pulse: Date.now(),
+      message: "Jádro aktivováno"
+    };
+
+    saveState(state);
+
+    return state;
+
+  }
+
+  return sleepState();
+}
+
+// ===== PULS (ŽIVOT) =====
+function pulse(core) {
+
+  core.pulse = Date.now();
+
+  saveState(core);
+
+  return core;
+}
+
+// ===== VSTUP =====
+function handleInput(value) {
+
+  CORE = activate(value);
+
+  console.log("[CORE]", CORE);
+
+  return CORE;
+}
+
+// ===== START =====
+let CORE = loadState();
+
+if (CORE.state === "awake") {
+
+  CORE = pulse(CORE);
+
+  console.log("🫀 Jádro běží", CORE);
+
+} else {
+
+  console.log("💤 Jádro spí");
+
+}
+
   /* ===========================
      🖥️ UI – Tiles + Drawer
   ============================ */
@@ -393,6 +487,8 @@
     bClear.addEventListener('click', ()=>{ elLog.textContent=''; logLine('🧹 Log vyčištěn.'); });
 
     // Boot
+    handleInput(KdeJeToOvoce);
+logLine("🫀 CORE aktivován");
     logLine('✅ UI připraveno • kompatibilní s RepairNet v'+(window.RepairNet?.version||'?'));
     (function renderLoop(){ renderKPI(); renderList(); setTimeout(renderLoop, 1000); })();
   })();
