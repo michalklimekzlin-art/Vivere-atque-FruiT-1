@@ -1,14 +1,5 @@
 {
   "name": "vivere-atque-fruit",
   "version": "1.0.0",
-  "description": "Kde je to Ovoce • Vivere atque FruiT",
-  "type": "module",
-  "scripts": {
-    "dev": "vercel dev",
-    "build": "true"
-  },
-  "engines": {
-    "node": "18.x"
-  },
-  "dependencies": {}
+  "private": true
 }
