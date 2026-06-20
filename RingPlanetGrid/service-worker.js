@@ -1,62 +1,11 @@
 const CACHE_NAME = 'ringplanetgrid-pwa-v1';
 const OFFLINE_URL = './index.html';
-const PRECACHE_URLS = [
-  "./",
-  "./index.html",
-  "./manifest.json"
-];
-
-self.addEventListener('install', (event) => {
-  event.waitUntil(
-    caches.open(CACHE_NAME)
-      .then((cache) => cache.addAll(PRECACHE_URLS))
-      .then(() => self.skipWaiting())
-  );
-});
-
-self.addEventListener('activate', (event) => {
-  event.waitUntil(
-    caches.keys().then((keys) => Promise.all(
-      keys.filter((key) => key !== CACHE_NAME).map((key) => caches.delete(key))
-    ))
-  );
-  self.clients.claim();
-});
-
-self.addEventListener('fetch', (event) => {
-  if (event.request.method !== 'GET') return;
-
-  const requestUrl = new URL(event.request.url);
-  if (requestUrl.origin !== self.location.origin) return;
-
-  const isHtmlRequest =
-    event.request.mode === 'navigate' ||
-    event.request.destination === 'document' ||
-    (event.request.headers.get('accept') || '').includes('text/html');
-
-  if (isHtmlRequest) {
-    event.respondWith(
-      fetch(event.request)
-        .then((response) => {
-          const copy = response.clone();
-          caches.open(CACHE_NAME).then((cache) => cache.put(event.request, copy));
-          return response;
-        })
-        .catch(() => caches.match(event.request).then((cached) => cached || caches.match(OFFLINE_URL)))
-    );
-    return;
-  }
-
-  event.respondWith(
-    caches.match(event.request).then((cached) => {
-      if (cached) return cached;
-
-      return fetch(event.request).then((response) => {
-        if (!response || response.status !== 200 || response.type !== 'basic') return response;
-        const copy = response.clone();
-        caches.open(CACHE_NAME).then((cache) => cache.put(event.request, copy));
-        return response;
-      });
-    })
-  );
-});
+const PRECACHE_URLS = ['./', './index.html', './manifest.json', './style.css'];
+self.addEventListener('install', (e) => {e.waitUntil(caches.open(CACHE_NAME).then((c) => c.addAll(PRECACHE_URLS)).then(() => self.skipWaiting()))});
+self.addEventListener('activate', (e) => {e.waitUntil(caches.keys().then((k) => Promise.all(k.filter((n) => n !== CACHE_NAME).map((n) => caches.delete(n)))));self.clients.claim();});
+self.addEventListener('fetch', (e) => {if (e.request.method !== 'GET') return;
+const u = new URL(e.request.url);
+if (u.origin !== self.location.origin) return;
+const h = e.request.mode === 'navigate' || e.request.destination === 'document' || (e.request.headers.get('accept') || '').includes('text/html');
+if (h) {e.respondWith(fetch(e.request).then((r) => {const c = r.clone();caches.open(CACHE_NAME).then((s) => s.put(e.request, c));return r;}).catch(() => caches.match(e.request).then((c) => c || caches.match(OFFLINE_URL))));return;}
+e.respondWith(caches.match(e.request).then((c) => {if (c) return c;return fetch(e.request).then((r) => {if (!r || r.status !== 200 || r.type !== 'basic') return r;const s = r.clone();caches.open(CACHE_NAME).then((t) => t.put(e.request, s));return r;});}));});
