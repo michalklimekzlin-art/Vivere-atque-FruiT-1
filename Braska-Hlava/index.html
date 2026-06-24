@@ -152,17 +152,19 @@ Načítám jádro...
 <hr>
 
 <input
-type=“file”
-id=“souborInput”
+type="file"
+id="souborInput"
 hidden
-onchange=“vlozitSoubor(event)”
+onchange="vlozitSoubor(event)"
+>
 
 <input
-type=“file”
-accept=“image/*”
-id=“obrazekInput”
+type="file"
+accept="image/*"
+id="obrazekInput"
 hidden
-onchange=“vlozitObrazek(event)”
+onchange="vlozitObrazek(event)"
+>
 
 <button onclick="document.getElementById('souborInput').click()">
 📄 Vložit soubor
@@ -172,6 +174,15 @@ onchange=“vlozitObrazek(event)”
 </button>
 <div id="seznamSouboru" style="margin-top:10px;font-size:.8rem;">
 Zatím nejsou vloženy žádné soubory.
+</div>
+<img
+id="nahledObrazku"
+style="
+display:none;
+max-width:100%;
+margin-top:10px;
+border-radius:12px;
+">
 </div>
 <div class="card">
 <h2>🦆 Chybožrout</h2>
@@ -374,6 +385,8 @@ function vlozitObrazek(event){
       );
     kernelState.textContent =
       "Aktivní";
+      sphere.style.boxShadow =
+  "0 0 40px lime";
     registryCount.textContent =
       state.registry.length;
     materialCount.textContent =
@@ -383,6 +396,8 @@ function vlozitObrazek(event){
   }else{
     kernelState.textContent =
       "Nouzový provoz";
+      sphere.style.boxShadow =
+  "0 0 40px orange";
     const matsKey =
       "vaft_materials_v1";
     const mats =
